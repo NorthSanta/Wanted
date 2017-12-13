@@ -44,7 +44,7 @@ public class movementrotation : MonoBehaviour {
 
         perd.pos = new MyVec(transform.position.x, transform.position.y, transform.position.z);
         perd.vel = new MyVec(0, 0, 300f);
-        perd.angularV = new MyVec(0, 4f, 0);
+        perd.angularV = new MyVec(x, y, z);
         perd.forces = drag + gravity + magnuss;
         move = new MyVec(transform.position.x, transform.position.y, transform.position.z);
         init = new MyQuat(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
@@ -55,19 +55,11 @@ public class movementrotation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-
-
-        
-
-        
-
        
-        angularV = new MyVec(x, y, z);
+        //angularV = new MyVec(x, y, z);
         angularD = perd.angularV * Time.deltaTime;
-        perd.angularV.normalize();
-        rot = new MyQuat(perd.angularV.x, perd.angularV.y, perd.angularV.z, angularD.length());
+        //perd.angularV.normalize();
+        rot = new MyQuat(perd.angularV.x, perd.angularV.y, perd.angularV.z, angularD.magnitude);
         //Debug.DrawLine(transform.position, new Vector3(angularV.x, angularV.y, angularV.z) + transform.position, Color.blue);
         final = rot *new MyQuat(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
         transform.rotation = new Quaternion(final.x, final.y, final.z, final.w);
