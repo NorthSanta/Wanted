@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IK_FABRIK3 : MonoBehaviour
 {
-    
+
 
     struct myTransform
     {
@@ -108,13 +108,25 @@ public class IK_FABRIK3 : MonoBehaviour
                 MyQuat myQuat = MyQuat.AngleAxis(alpha, ref myAxis);
 
                 Quaternion quat = new Quaternion(myQuat.x, myQuat.y, myQuat.z, myQuat.w);
-
+                
+                
                 joints[i].rotation = quat * joints[i].rotation;
                 //joints[i].rotation = Quaternion.AngleAxis(alpha, axis) * joints[i].rotation;
                 joints[i + 1].position = new Vector3(copy[i + 1].x, copy[i + 1].y, copy[i + 1].z);
+                if(i == 2)
+                {
+                  //  print(joints[i].rotation.z);
+                }
+               
+                if (joints[i].rotation.z > 0.5f || joints[i].rotation.z < -0.5f && i >0)
+                {
+                    joints[i].rotation = joints[i - 1].rotation;
+                    
+                    
+                    //joints[i].rotation = new Quaternion(joints[i].rotation.x, joints[i].rotation.y, , joints[i - 1].rotation.w);
+                }
 
-
-            }          
+            }
         }
     }
 
