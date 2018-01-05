@@ -118,11 +118,9 @@ public class IK_FABRIK3 : MonoBehaviour
                   //  print(joints[i].rotation.z);
                 }
                
-                if (joints[i].rotation.z > 0.5f || joints[i].rotation.z < -0.5f && i >0)
+                if ((joints[i].rotation.z > 0.5f || joints[i].rotation.z < -0.5f) && i >0)
                 {
                     joints[i].rotation = joints[i - 1].rotation;
-                    
-                    
                     //joints[i].rotation = new Quaternion(joints[i].rotation.x, joints[i].rotation.y, , joints[i - 1].rotation.w);
                 }
 

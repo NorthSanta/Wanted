@@ -146,7 +146,12 @@ public class MyVec
     {
         return new MyVec(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
     }
-   
+
+    public static MyVec operator *(MyVec lhs, MyVec rhs)
+    {
+        return new MyVec(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+    }
+
     public static MyVec operator /(MyVec lhs, float rhs)
     {
         return new MyVec(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
