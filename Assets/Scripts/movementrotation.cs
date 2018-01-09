@@ -81,7 +81,7 @@ public class movementrotation : MonoBehaviour {
     void Update () {
 
         //acceleration & forces
-        perd.vel = new MyVec(magnuss.x, gravity, perd.vel.z);
+        perd.vel = new MyVec(magnuss.x, -gravity, perd.vel.z);
         velocity = perd.vel;
 
         magnuss = ((MyVec.Cross(perd.angularV, perd.vel)) * magnussCoef * airDens * crossSectionalArea * radius) * 0.5f;
