@@ -71,7 +71,7 @@ public class UserInput : MonoBehaviour
                    
                 
             }
-            print(vel);
+            //print(vel);
            
         }
         //MyVec v =new MyVec( Input.mousePosition.x, Input.mousePosition.y, -9.15f);

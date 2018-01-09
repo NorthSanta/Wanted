@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class movementrotation : MonoBehaviour {
     public MyVec move;
@@ -14,6 +15,8 @@ public class movementrotation : MonoBehaviour {
     public float gravity;
     public MyVec magnuss = new MyVec(0, 0, 0);
 
+    public Text text;
+
     float mass = 0.1f;
 
     public float MagnusX;
@@ -21,6 +24,8 @@ public class movementrotation : MonoBehaviour {
     public float DragX, DragY, DragZ;
 
     public float angularY;
+
+    public KeyManager keys;
 
     float cross;
     public MyVec acc;
@@ -60,8 +65,9 @@ public class movementrotation : MonoBehaviour {
         proportionalCoef = 0.15f;
         crossSectionalArea = (Mathf.Pow(radius, 2)) * Mathf.PI;
 
+        keys = GameObject.Find("InputManager").GetComponent<KeyManager>();
         perd.pos = new MyVec(transform.position.x, transform.position.y, transform.position.z);
-        perd.vel = new MyVec(0, 0, 20);
+        perd.vel = new MyVec(0, 0, 20) + keys.vent;
         perd.angularV = new MyVec(0, angularY, 0);
         uolo = new Vector3( perd.angularV.x,perd.angularV.y,perd.angularV.z);
         gravity = 9.8f * mass;

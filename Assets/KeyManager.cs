@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyManager : MonoBehaviour {
     public bool rClicked;
@@ -8,10 +9,14 @@ public class KeyManager : MonoBehaviour {
     public bool bClicked;
 
     public bool paused;
+
+    public Text text;
+    public MyVec vent;
     // Use this for initialization
     void Start () {
-		
-	}
+        vent = new MyVec(Random.RandomRange(-5, 5), Random.RandomRange(-5, 5), Random.RandomRange(-5, 5));
+        text.text = "Wind Velocity: X(" + vent.x + ")," + "Y(" + vent.y + ");" + "Z(" + vent.z + ")";
+    }
 	
 	// Update is called once per frame
 	void Update () {
