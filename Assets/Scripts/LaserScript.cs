@@ -36,7 +36,7 @@ public class LaserScript : MonoBehaviour
                 {
                     laserLineRenderer.enabled = true;
                     laserLineRenderer.material = forces;
-                    dirMagnuss = new Vector3(move.acc.x, move.acc.y, move.acc.z).normalized;
+                    dirMagnuss = new Vector3(move.magnuss.x, move.magnuss.y, move.magnuss.z);
                     ShootLaserFromTargetPosition(transform.position, dirMagnuss, dirMagnuss.magnitude);
                 }
                 else
@@ -49,7 +49,7 @@ public class LaserScript : MonoBehaviour
                 {
                     laserLineRenderer.enabled = true;
                     laserLineRenderer.material = velocities;
-                    dirMagnuss = new Vector3(move.velocity.x, move.velocity.y, move.velocity.z).normalized;
+                    dirMagnuss = new Vector3(move.velocity.x, move.velocity.y, move.velocity.z);
                     ShootLaserFromTargetPosition(transform.position, dirMagnuss, dirMagnuss.magnitude);
                 }
                 else
@@ -94,6 +94,33 @@ public class LaserScript : MonoBehaviour
                     laserLineRenderer.enabled = false;
                 }
                 break;
+            case 5:
+                if (keymanager.rClicked)
+                {
+                    laserLineRenderer.enabled = true;
+                    laserLineRenderer.material = forces;
+                    dirMagnuss = new Vector3(0, -move.gravity, 0).normalized;
+                    ShootLaserFromTargetPosition(transform.position, dirMagnuss, dirMagnuss.magnitude);
+                }
+                else
+                {
+                    laserLineRenderer.enabled = false;
+                }
+                break;
+            case 6:
+                if (keymanager.rClicked)
+                {
+                    laserLineRenderer.enabled = true;
+                    laserLineRenderer.material = forces;
+                    dirMagnuss = new Vector3(move.drag.x, move.drag.y, move.drag.z).normalized;
+                    ShootLaserFromTargetPosition(transform.position, dirMagnuss, dirMagnuss.magnitude);
+                }
+                else
+                {
+                    laserLineRenderer.enabled = false;
+                }
+                break;
+
         }
         
             //ShootLaserFromTargetPosition(transform.position, transform.forward, laserMaxLength, 1);

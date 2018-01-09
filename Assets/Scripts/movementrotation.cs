@@ -10,8 +10,8 @@ public class movementrotation : MonoBehaviour {
     MyQuat rot;
     MyVec angularD;
 
-    MyVec drag = new MyVec(0, 0, 0);
-    float gravity;
+    public MyVec drag = new MyVec(0, 0, 0);
+    public float gravity;
     public MyVec magnuss = new MyVec(0, 0, 0);
 
     float mass = 0.1f;
