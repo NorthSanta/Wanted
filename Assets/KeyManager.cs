@@ -14,12 +14,14 @@ public class KeyManager : MonoBehaviour {
     public MyVec vent;
     // Use this for initialization
     void Start () {
-        vent = new MyVec(Random.RandomRange(-5, 5), Random.RandomRange(-5, 5), Random.RandomRange(-5, 5));
+        vent = new MyVec(Random.Range(-5f, 5f), Random.Range(-5f, 5f), Random.Range(-5f, 5f));
         text.text = "Wind Velocity: X(" + vent.x + ")," + "Y(" + vent.y + ");" + "Z(" + vent.z + ")";
+
     }
 	
 	// Update is called once per frame
 	void Update () {
+       
         if (Input.GetKeyDown(KeyCode.R))
         {
             rClicked = !rClicked;
@@ -34,6 +36,10 @@ public class KeyManager : MonoBehaviour {
         }else if (Input.GetKeyDown(KeyCode.Escape))
         {
             paused = !paused;
+        }else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            vent = new MyVec(Random.Range(-5f, 5f), Random.Range(-5f, 5f), Random.Range(-5f, 5f));
+            text.text = "Wind Velocity: X(" + vent.x + ")," + "Y(" + vent.y + ");" + "Z(" + vent.z + ")";
         }
         if (paused)
         {
