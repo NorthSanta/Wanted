@@ -6,6 +6,8 @@ public class KeyManager : MonoBehaviour {
     public bool rClicked;
     public bool gClicked;
     public bool bClicked;
+
+    public bool paused;
     // Use this for initialization
     void Start () {
 		
@@ -24,6 +26,16 @@ public class KeyManager : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.B))
         {
             bClicked = !bClicked;
+        }else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            paused = !paused;
+        }
+        if (paused)
+        {
+            Time.timeScale = 0;
+        }else
+        {
+            Time.timeScale = 0.01f;
         }
     }
 }

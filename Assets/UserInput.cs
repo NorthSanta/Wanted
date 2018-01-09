@@ -12,16 +12,27 @@ public class UserInput : MonoBehaviour
     public GameObject perdigo;
     bool isdown;
     public Transform init;
+    public List<GameObject> bullets;
+    public KeyManager keys;
     // Use this for initialization
     void Start()
     {
         ZPos = 0.8f;
         count = 0;
+        keys = GameObject.Find("InputManager").GetComponent<KeyManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            for(int i = 0; i < bullets.Count; i++)
+            {
+               Destroy(bullets[i]);
+            }
+        }
+
         v = Input.mousePosition;
         v.z = ZPos;
         if (Input.GetKey(KeyCode.W))
@@ -54,7 +65,8 @@ public class UserInput : MonoBehaviour
             {
                 GameObject nou = Instantiate(perdigo, init.position, init.rotation);
                 vel = -Input.GetAxis("Mouse X") * 10f;
-                nou.GetComponent<movementrotation>().angularY =vel ; 
+                nou.GetComponent<movementrotation>().angularY =vel;
+                bullets.Add(nou);
               
                    
                 

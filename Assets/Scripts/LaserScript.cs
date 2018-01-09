@@ -112,7 +112,20 @@ public class LaserScript : MonoBehaviour
                 {
                     laserLineRenderer.enabled = true;
                     laserLineRenderer.material = forces;
-                    dirMagnuss = new Vector3(move.drag.x, move.drag.y, move.drag.z).normalized;
+                    dirMagnuss = new Vector3(move.drag.x, move.drag.y, move.drag.z);
+                    ShootLaserFromTargetPosition(transform.position, dirMagnuss, dirMagnuss.magnitude);
+                }
+                else
+                {
+                    laserLineRenderer.enabled = false;
+                }
+                break;
+            case 7:
+                if (keymanager.rClicked)
+                {
+                    laserLineRenderer.enabled = true;
+                    laserLineRenderer.material = forces;
+                    dirMagnuss = new Vector3(move.acc.x, move.acc.y, move.acc.z);
                     ShootLaserFromTargetPosition(transform.position, dirMagnuss, dirMagnuss.magnitude);
                 }
                 else
